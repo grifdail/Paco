@@ -42,7 +42,7 @@ const params = {
   [Actions.setVariable]: VariableControlls,
   [Actions.incrementVariable]: VariableControlls,
   [Actions.multiplyVariable]: VariableControlls,
-  [Actions.toogle]: ({modifiers, actionIndex, action, path}) => {
+  [Actions.toggle]: ({modifiers, actionIndex, action, path}) => {
     const state = getState();
     return (
       <div>

@@ -4,7 +4,7 @@ var ActionsByName = {
   setVariable: 3,
   incrementVariable: 4,
   multiplyVariable: 5,
-  toogle: 6,
+  toggle: 6,
 }
 var Actions = {};
 Actions[ActionsByName.goTo] = function(a) {
@@ -22,7 +22,7 @@ Actions[ActionsByName.incrementVariable] = function(a) {
 Actions[ActionsByName.multiplyVariable] = function(a) {
   variables[a.variable] *= Number(a.value);
 }
-Actions[ActionsByName.toogle] = function(a) {
+Actions[ActionsByName.toggle] = function(a) {
   variables[a.variable] = Number(!variables[a.variable]);
 }
 const Conditions = {
