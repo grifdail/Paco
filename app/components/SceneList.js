@@ -12,7 +12,7 @@ const List = ({list, selected, onClick, onAdd, getName}) => {
         a
       }
       <div className="list-add-btn">
-        <Button onClick={onAdd} block bsStyle="success"><Glyphicon glyph="plus"/></Button>
+        <Button onClick={onAdd} block bsStyle="success"><Glyphicon glyph="plus"/>Add a scene</Button>
 
       </div>
     </Nav>

@@ -26,6 +26,7 @@ app.on('ready', () => {
   mainWindow.loadURL(`file://${__dirname}/app/app.html`);
 
   mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.maximize();
     mainWindow.show();
     mainWindow.focus();
   });
