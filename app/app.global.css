@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  background-color: #232C39;
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, .5) 10%, rgba(255, 255, 255, .7));
+  font-family: Arial, Helvetica, Helvetica Neue;
+  overflow-y: hidden;
+}
+.root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+}
+.file-selector {
+  padding: 5rem;
+
+}
+.file-selector  .jumbotron {
+  padding-left: 60px;
+  padding-right: 60px;
+  border-radius: 15px;
+}
+.game-canvas {
+  width: 800px;
+  height: 800px;
+  position: relative;
+  overflow: hidden;
+}
+.background {
+  width: 100%;
+  height: 100%;
+}
+.game-canvas img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.scene-root {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
+
+.left-sidebar, .scene-editor {
+  flex: 0 1 auto;
+  min-width: 300px;
+  background: white;
+  color: black;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  padding: 2rem;
+}
+.scene-editor {
+  flex: 1 1 auto;
+}
+
+.canvas {
+  flex-grow: 1 1 auto;
+}
+
+.list-add-btn {
+  margin-top: 1rem;
+}
+.panel-body form {
+  margin: 1rem;
+}
+.img-panel-header a {
+  float: right;
+}
+.img-panel-header:hover {
+  text-decoration: underline;
+}
+.remove-button {
+  float: right;
+}
+.invisible-input {
+  border: none;
+  background: transparent;
+}
+.invisible-input:focus {
+  border: 0 0 3px;
+}
+.invisible-input:hover {
+  box-shadow: 0 0 3px black;
+}
+
+.image-list button {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.tab-content {
+    padding-top: 1rem;
+}
+.image-editor h4 {
+  margin-top:2rem;
+}
+.action-list ul {
+  margin-top: 1rem;
+}
