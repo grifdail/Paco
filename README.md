@@ -5,7 +5,7 @@ This is **Paco**.
 
 Paco is a Point and Click editor.
 
-Paco allows anyone to make his own game, without technical knowledge.  
+Paco allows anyone to make their own game, without technical knowledge.  
 The aim of the project is to make a very simple tool, with a limited scope. Paco is not a powerful tool. It's a simple tool.
 The project is currently at a beta level.
 

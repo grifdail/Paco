@@ -11,7 +11,8 @@ import {setUpProject, loadState, saveLastOpenedProject, saveImage} from "./state
 
 export const setProjectPath = (state, projectPath) => {
   setUpProject(projectPath);
-  const game = loadState(projectPath) || defaultGame()
+  const game = loadState(projectPath) || defaultGame();
+  game.projectPath = projectPath;
   return changeCurrentScene(merge(state, {
     projectPath,
     game,

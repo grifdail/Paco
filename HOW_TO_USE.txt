@@ -57,7 +57,7 @@ conditions compare a variable with a predefined value to determine if an image w
 Export
 ---------
 
-Just upload the content of your game folder to your favorite host. Some services will require you to bundle the game into an archive like a zip. It only needs a web server. The game doesn't use any of the brand new JS features and _should_ run on most browsers. Offline mode isn't supported yet.
+Just upload the content of your game folder to your favorite hosting service. Some services will require you to bundle the game into an archive like a zip. It only needs a web server. The game doesn't use any of the brand new JS features and _should_ run on most browsers. Offline mode isn't supported yet.
 
 
 I want to ...

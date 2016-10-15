@@ -3,6 +3,9 @@ import {join, extname } from "path";
 import {remote} from 'electron';
 import {ncp} from 'ncp';
 import {generate as shortId} from "shortid";
+import rawIndexHtml from 'raw!../export/index.html'
+import rawIndexJs from 'raw!../export/index.js'
+
 const app = remote.app;
 
 
@@ -42,7 +45,11 @@ export const saveState = (st) => {
 }
 
 export const setUpProject = (projectPath) => {
-  ncp(join(__dirname,"..","export"), projectPath, (...args) => console.log(args) )
+  const dirPath = process.env.NODE_ENV === 'development' ? join(__dirname, '..', 'export') : join(app.getAppPath(),'app','export');
+  ncp(dirPath, projectPath, (...args) => console.log(args) )
+  //writeFileSync(join(projectPath, 'index.js'), rawIndexJs);
+  //writeFileSync(join(projectPath, 'index.html'), rawIndexHtml);
+  //makeDirSync(projectPath, 'images'));
 }
 export const saveImage = (projectPath, file) => {
   const name = shortId();

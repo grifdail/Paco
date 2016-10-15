@@ -22,8 +22,9 @@ app.on('ready', () => {
     width: 1024,
     height: 728
   });
-
-  mainWindow.loadURL(`file://${__dirname}/app/app.html`);
+  const rootPath =  process.env.NODE_ENV === 'development' ? __dirname : app.getAppPath();
+  console.log(rootPath);
+  mainWindow.loadURL(join(rootPath +`/app/app.html`));
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.maximize();
