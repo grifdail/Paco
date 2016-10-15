@@ -1,4 +1,4 @@
-import {assoc, assocPath, merge, path as propPath, remove, equals, dissocPath} from "ramda";
+import {assoc, assocPath, merge, path as propPath, remove, equals, dissocPath, clone, omit} from "ramda";
 import {generate as shortId} from "shortid";
 import Actions from "./Actions";
 import setIn from "./setIn";
@@ -40,7 +40,17 @@ export const changeCurrentLink = (state, newScene) => {
 export const addScene = (state) => {
   const name = shortId();
   const scene = defaultScene(name)
-  return assocPath(['game', 'scenes', name], scene, state);
+  return changeCurrentScene(assocPath(['game', 'scenes', name], scene, state), name);
+}
+export const cloneScene = (state, sceneId) => {
+  const name = shortId();
+  const toBeCloned = propPath(['game', 'scenes', sceneId], state);
+  const scene = assoc('name', name, clone(toBeCloned));
+  return changeCurrentScene(assocPath(['game', 'scenes', name], scene, state), name);
+}
+export const removeScene = (state, id) => {
+
+  return assocPath(['game', 'scenes'] , omit(id, propPath(['game', 'scenes'], state)), state);
 }
 
 
@@ -59,10 +69,16 @@ export const setImage = (state, pathFromScene, file) => {
 ///////////////////////
 
 export const addLink = (state) => {
-  const name = shortId();
   const links = state.game.scenes[state.currentScene].links;
   const newLink = defaultImage(links.length);
-  return setIn(['game', 'scenes', state.currentScene, 'links'], [...links,newLink], state);
+  return changeCurrentLink(setIn(['game', 'scenes', state.currentScene, 'links'], [...links,newLink], state), links.length);
+}
+export const cloneLink = (state, link) => {
+  console.log(cloneLink)
+  const links = state.game.scenes[state.currentScene].links;
+  const toBeCloned = propPath(['game', 'scenes', state.currentScene, 'links', link|0], state);
+  const newLink =  assoc('name', toBeCloned.name+' clone #'+links.length, clone(toBeCloned));
+  return changeCurrentLink(setIn(['game', 'scenes', state.currentScene, 'links'], [...links,newLink], state), links.length);
 }
 export const setLinkField = (state, link, field, value) => {
   return setIn(['game', 'scenes', state.currentScene, 'links', link|0, field], value, state);
@@ -78,15 +94,12 @@ export const removeLink = (state, link) => {
 // ACTION & CONDITION //
 ////////////////////////
 export const addAction = (state, pathFromScene) => {
-  const name = shortId();
   const path = ['game', 'scenes', state.currentScene, ...pathFromScene]
   const links = propPath(path, state) || [];
   const newLink = defaultAction();
   return setIn(path, [...links,newLink], state);
 }
 export const addCondition = (state, pathFromScene) => {
-  const name = shortId();
-  console.log(name, pathFromScene);
   const path = ['game', 'scenes', state.currentScene, ...pathFromScene]
   const links = propPath(path, state) || [];
   const newLink = defaultConditions();

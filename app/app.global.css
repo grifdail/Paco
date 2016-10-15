@@ -64,6 +64,13 @@ body {
   flex-grow: 1 1 auto;
 }
 
+.nav-pills>li>a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
 .list-add-btn {
   margin-top: 1rem;
 }
@@ -103,6 +110,12 @@ body {
 }
 .image-editor h4 {
   margin-top:2rem;
+}
+.image-editor .btn-toolbar {
+  margin-bottom: 1rem;
+}
+.image-editor .btn-toolbar .btn-group {
+  float: right;
 }
 .action-list ul {
   margin-top: 1rem;

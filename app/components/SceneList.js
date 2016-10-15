@@ -1,10 +1,18 @@
 import React from 'react';
-import {Nav, NavItem, Button, Glyphicon} from "react-bootstrap";
+import {Nav, NavItem, Button, Glyphicon, ButtonGroup} from "react-bootstrap";
+import {preventDefault} from "../utils/utils";
 
-const List = ({list, selected, onClick, onAdd, getName}) => {
+const List = ({list, selected, onClick, onAdd, getName, cloneScene, removeScene}) => {
   const a = Object.keys(list).map(id => {
     const name = getName(id, list[id]);
-    return <NavItem key={id} onClick={e => onClick(id, list[id])} active={selected===id}>{name}</NavItem>;
+    return <NavItem key={id} onClick={e => onClick(id, list[id])} active={selected===id}>
+    {name}
+    <ButtonGroup>
+      <Button onClick={ preventDefault(() => cloneScene(id)) }><Glyphicon glyph='duplicate'/></Button>
+      {id === 'origin' ? null : <Button onClick={ preventDefault(() => removeScene(id)) }><Glyphicon glyph='remove'/></Button>}
+
+    </ButtonGroup>
+    </NavItem>;
   });
   return (
     <Nav bsStyle="pills" stacked>

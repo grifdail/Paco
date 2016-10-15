@@ -18,6 +18,8 @@ export default ({currentScene, game, selectedLink, modifiers}) => {
             list={game.scenes}
             getName={((id, value) => (value.name || id))}
             selected={currentScene}
+            cloneScene={modifiers.cloneScene}
+            removeScene={modifiers.removeScene}
           />
         </div>
       </div>

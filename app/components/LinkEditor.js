@@ -3,7 +3,7 @@ import ActionsEditor from "./ActionsEditor"
 import ConditionEditor from "./ConditionEditor"
 import ImageField from "./ImageField"
 
-import {Form, FormGroup, InputGroup, FormControl, Button, Glyphicon, ButtonGroup, Tabs, Tab} from "react-bootstrap";
+import {Form, FormGroup, InputGroup, FormControl, Button, Glyphicon, ButtonGroup, Tabs, Tab, ButtonToolbar} from "react-bootstrap";
 const Addon = InputGroup.Addon;
 const SceneList = ({link, id, modifiers}) => {
   const {
@@ -12,6 +12,14 @@ const SceneList = ({link, id, modifiers}) => {
   return (
     <div className="image-editor">
       <h4><input className="invisible-input" value={name} onChange={(e) => modifiers.setLinkField(id, "name", e.target.value)} /></h4>
+      <ButtonToolbar>
+        <ButtonGroup>
+          <Button onClick={() => modifiers.cloneLink(id) }><Glyphicon glyph='duplicate'/></Button>
+          <Button onClick={() => modifiers.removeLink(id) }><Glyphicon glyph='remove'/></Button>
+        </ButtonGroup>
+
+
+      </ButtonToolbar>
       <Tabs defaultActiveKey="0" id="link-tab-editor">
         <Tab title="Params" eventKey="0">
           <Form horizontal>

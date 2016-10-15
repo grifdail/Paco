@@ -1,7 +1,7 @@
 import React from 'react';
 import { PanelGroup, Panel, Button, Glyphicon } from "react-bootstrap";
 import LinkEditor from "./LinkEditor";
-import { preventDefault } from "../utils/utils";
+
 
 
 const List = ({list, selected, onClick, onAdd, onDelete, getName, modifiers}) => {
