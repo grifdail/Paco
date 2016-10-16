@@ -4,6 +4,7 @@ import Actions from "./Actions";
 import setIn from "./setIn";
 import {defaultScene, defaultImage, defaultAction, defaultConditions, defaultGame} from "./defaultStates";
 import {setUpProject, loadState, saveLastOpenedProject, saveImage} from "./stateSave";
+import {upgrade} from "./UpgradeState";
 
 ///////////////////////
      // EDITOR //
@@ -11,7 +12,7 @@ import {setUpProject, loadState, saveLastOpenedProject, saveImage} from "./state
 
 export const setProjectPath = (state, projectPath) => {
   setUpProject(projectPath);
-  const game = loadState(projectPath) || defaultGame();
+  const game = upgrade(loadState(projectPath)) || defaultGame();
   game.projectPath = projectPath;
   return changeCurrentScene(merge(state, {
     projectPath,
