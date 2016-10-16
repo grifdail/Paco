@@ -11,13 +11,19 @@ import {upgrade} from "./UpgradeState";
 ///////////////////////
 
 export const setProjectPath = (state, projectPath) => {
-  setUpProject(projectPath);
-  const game = upgrade(loadState(projectPath)) || defaultGame();
-  game.projectPath = projectPath;
-  return changeCurrentScene(merge(state, {
-    projectPath,
-    game,
-  }), 'origin')
+  try {
+    setUpProject(projectPath);
+    const game = upgrade(loadState(projectPath) || defaultGame());
+    game.projectPath = projectPath;
+    return changeCurrentScene(merge(state, {
+      projectPath,
+      game,
+    }), 'origin')
+  } catch (err) {
+    alert("there was an error. Please ping me @grifdail with that "+ err.message);
+    window.localStorage.clear();
+  }
+
 };
 export const closeProject = (state, projectPath) => {
   saveLastOpenedProject(null);

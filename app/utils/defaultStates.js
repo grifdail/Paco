@@ -3,7 +3,7 @@ import { ConditionTypes } from "./Conditions";
 
 export const defaultGame = () => ({
   scenes: {
-    origin: {name:"origin", links:[], image:"http://dummyimage.com/800/444/000.png&text=placeholder", actions: []},
+    origin: defaultScene('origin'),
   },
   variables: {}
 })
