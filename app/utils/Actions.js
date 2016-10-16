@@ -6,6 +6,7 @@ const Actions = {
   incrementVariable: 4,
   multiplyVariable: 5,
   toggle: 6,
+  reload: 7,
 }
 
 export default Actions;

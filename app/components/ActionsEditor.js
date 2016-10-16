@@ -52,7 +52,8 @@ const params = {
         </FormGroup>
       </div>
     );
-  }
+  },
+  [Actions.reload]: () => <div/>,
 }
 
 const Action = ({action, actionIndex, modifiers, path}) => {

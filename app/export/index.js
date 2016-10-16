@@ -5,6 +5,7 @@ var ActionsByName = {
   incrementVariable: 4,
   multiplyVariable: 5,
   toggle: 6,
+  reload: 7,
 }
 var Actions = {};
 Actions[ActionsByName.goTo] = function(a) {
@@ -25,6 +26,9 @@ Actions[ActionsByName.multiplyVariable] = function(a) {
 Actions[ActionsByName.toggle] = function(a) {
   variables[a.variable] = Number(!variables[a.variable]);
 }
+Actions[ActionsByName.reload] = function(a) {
+  setUpScene(currentScene);
+}
 const Conditions = {
   less: (a,b) => a<b,
   lessOrEqual: (a,b) => a<=b,
@@ -37,6 +41,7 @@ const Conditions = {
 var game = null;
 var root = null;
 var variables = {};
+var currentScene = 'origin'
 
 var req = new XMLHttpRequest();
 req.open('GET', './game.json');
@@ -59,6 +64,8 @@ function setUpScene(id) {
   var scene = getScene(id);
   cleanNode(root);
   //
+  currentScene = id;
+  //
   var image = document.createElement("img");
   image.classList.add("background");
   image.src = "./images/"+scene.image;
@@ -66,6 +73,7 @@ function setUpScene(id) {
   //
   importImages(scene.links);
   executeActions(scene.actions);
+  //
 }
 function loadScene(id) {
   var scene = getScene(id);
