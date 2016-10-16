@@ -2,6 +2,7 @@ import React from 'react';
 import ActionsEditor from "./ActionsEditor"
 import ConditionEditor from "./ConditionEditor"
 import ImageField from "./ImageField"
+import * as alignement from "../utils/AlignementUtils"
 
 import {Form, FormGroup, InputGroup, FormControl, Button, Glyphicon, ButtonGroup, Tabs, Tab, ButtonToolbar} from "react-bootstrap";
 const Addon = InputGroup.Addon;
@@ -16,6 +17,16 @@ const SceneList = ({link, id, modifiers}) => {
         <ButtonGroup>
           <Button onClick={() => modifiers.cloneLink(id) }><Glyphicon glyph='duplicate'/></Button>
           <Button onClick={() => modifiers.removeLink(id) }><Glyphicon glyph='remove'/></Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button onClick={alignement.top(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-top'/></Button>
+          <Button onClick={alignement.center(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-horizontal'/></Button>
+          <Button onClick={alignement.bottom(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-bottom'/></Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button onClick={alignement.left(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-left'/></Button>
+          <Button onClick={alignement.middle(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-vertical'/></Button>
+          <Button onClick={alignement.right(modifiers.setLinkField, id, link) }><Glyphicon glyph='object-align-right'/></Button>
         </ButtonGroup>
 
 
