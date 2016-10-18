@@ -2,6 +2,7 @@ import React from 'react';
 import { PanelGroup, Panel, Button, Glyphicon } from "react-bootstrap";
 import LinkEditor from "./LinkEditor";
 
+import {getState, getImagePath} from "../utils/utils";
 
 
 const List = ({list, selected, onClick, onAdd, onDelete, getName, modifiers}) => {
@@ -18,7 +19,7 @@ const List = ({list, selected, onClick, onAdd, onDelete, getName, modifiers}) =>
                bsStyle={isSelected ? "primary" : "default"}
                onClick={e => isSelected ? onClick(null) : onClick(id, list[id])}
              >
-             {name}
+             <img src={getImagePath(list[id].image)}/> {name}
              </Button>
 
            );

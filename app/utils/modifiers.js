@@ -62,9 +62,11 @@ export const removeScene = (state, id) => {
 
 
 export const updateCurrentSceneName = (state, value) => {
-  return setIn(['game', 'scenes', state.currentScene, 'name'], value, state);
+  return updateCurrentSceneField(state, 'name', value)
 }
-
+export const updateCurrentSceneField = (state, field, value) => {
+  return setIn(['game', 'scenes', state.currentScene, field], value, state);
+}
 
 export const setImage = (state, pathFromScene, file) => {
   const newName = saveImage(state.projectPath, file);

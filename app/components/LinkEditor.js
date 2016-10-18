@@ -61,7 +61,7 @@ const SceneList = ({link, id, modifiers}) => {
             <FormGroup>
               <InputGroup>
                 <Addon >image</Addon>
-                <ImageField path={["links", id, "image"]} value={image} onFile={modifiers.setImage}/>
+                <ImageField path={["links", id, "image"]} value={image} onFile={modifiers.setImage} onSelect={img => modifiers.setLinkField(id, "image", img)}/>
               </InputGroup>
             </FormGroup>
 

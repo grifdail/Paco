@@ -2,9 +2,10 @@ import React from 'react';
 import ActionsEditor from "./ActionsEditor"
 import ImageList from "./ImageList";
 import Game from "./Game";
-import {Tabs, Tab, FormGroup, ControlLabel} from "react-bootstrap";
+import {Tabs, Tab, FormGroup, ControlLabel, InputGroup} from "react-bootstrap";
 import ImageField from "./ImageField"
 
+const Addon = InputGroup.Addon;
 const SceneEditor = ({scene, id, selectedLink, modifiers}) => {
   return (
     <div className="scene-root">
@@ -20,8 +21,7 @@ const SceneEditor = ({scene, id, selectedLink, modifiers}) => {
           <Tabs defaultActiveKey={0} id="scene-tab-editor">
             <Tab title="Params" eventKey={0}>
               <FormGroup>
-                  <ControlLabel>background</ControlLabel>
-                  <ImageField path={["image"]} value={scene.image} onFile={modifiers.setImage}/>
+                <ImageField path={["image"]} value={scene.image} onFile={modifiers.setImage} label="background" onSelect={img=>modifiers.updateCurrentSceneField('image', img)}/>
               </FormGroup>
             </Tab>
             <Tab title="images" eventKey={1}>
